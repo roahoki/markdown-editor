@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- main font -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- style -->
+    <link rel="stylesheet" href="style.css">
+    <!-- our javascript implementation -->
+    <script type="module" src="main.js" defer></script>
+    <!-- library for pdf generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    
+
+    <title>MARKDOWN DIV INOS</title>
+</head>
+
+<body>
+    <header>
+
+        <div class="left-side-header">
+
+            <div id="toolbar">
+
+                <button id="h1-button">
+                    <img src="./src/assets/heading-1-svgrepo-com.svg" alt="H1 Icon" width="24"
+                        height="24">
+                </button>
+
+                <button id="h2-button">
+                    <img src="./src/assets/heading-2-svgrepo-com.svg" alt="H2 Icon" width="24"
+                        height="24">
+                </button>
+
+                <button id="h3-button">
+                    <img src="./src/assets/heading-3-svgrepo-com.svg" alt="H3 Icon" width="24"
+                    height="24">
+                </button>
+
+                <button id="bold-button">
+                    <img src="./src/assets/bold-strong-bold-format-editor-tool-toolbar-svgrepo-com.svg" alt="Bold Icon" width="24"
+                        height="24">
+                </button>
+
+                <button id="italic-button">
+                    <img src="./src/assets/italic-svgrepo-com.svg" alt="Bold Icon" width="24"
+                        height="24">
+                </button>
+
+                <button id="unordered-list-button">
+                    <img src="./src/assets/unordered-list-svgrepo-com.svg" alt="Bold Icon" width="24"
+                        height="24">
+                </button>
+
+                <button id="ordered-list-button">
+                    <img src="./src/assets/ordered-list-svgrepo-com.svg" alt="Ordered List Icon" width="24"
+                        height="24">
+                </button>
+
+                <button id="blockquote-button">
+                    <img src="./src/assets/block-quote-svgrepo-com.svg" alt="Blockquote Icon" width="24"
+                        height="24">
+                </button>
+
+                <button id="link-button">
+                    <img src="./src/assets/link-svgrepo-com.svg" alt="Bold Icon" width="24"
+                        height="24">
+                </button>
+
+                <button id="image-button">
+                    <img src="./src/assets/image-svgrepo-com.svg" alt="Image Icon" width="24"
+                        height="24">
+                </button>
+
+                <button id="inline-code-button">
+                    <img src="./src/assets/code-svgrepo-com.svg" alt="Image Icon" width="24" height="24">
+                </button>
+
+                <button id="code-block-button">
+                    <img src="./src/assets/code-block-svgrepo-com.svg" alt="Image Icon" width="24" height="24">
+                </button>
+                
+            </div>
+
+        </div>
+
+        <div class="right-side-header">
+            <textarea id="document-title-textarea">Title</textarea>
+            <button id="raw-code-button">Raw</button>
+            <button id="download-pdf-button">
+                <img src="./src/assets/download-svgrepo-com.svg" alt="Image Icon" width="24" height="24">
+            </button>
+            <button id="theme-switch">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+                    <path
+                        d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+                    <path
+                        d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z" />
+                </svg>
+            </button>
+        </div>
+        
+    </header>
+
+    <section>
+        <div id="editor">
+            <textarea id="markdown-content" placeholder="Let's write some Markdown..." spellcheck="false"></textarea>
+            <div id="html-preview"></div>
+        </div>
+
+        <div id="dropdown" class="dropdown">
+            <ul class="dropdown-item">Code Block</ul>
+            <ul class="dropdown-item">Details</ul>
+        </div>
+        
+    </section>
+
+    <footer>
+        <p>Markdown Editor &copy; 2025</p>
+        <p>made by: <a href="https://github.com/roahoki">@roahoki</a> <a href="https://github.com/lexiesm">@lexiesm</a> <a href="https://github.com/IgnaciaGonzlez">@IgnaciaGonzlez</a></p>
+    </footer>
+
+    <!-- Pop up -->
+    <div id="link-popup" class="popup hidden">
+        <div class="popup-content">
+            <label for="link-text">Text:</label>
+            <input type="text" id="link-text" placeholder="Link text">
+            <label for="link-url">Link:</label>
+            <input type="url" id="link-url" placeholder="https://example.com">
+            <button id="link-accept-button">Accept</button>
+            <button id="link-cancel-button">Cancel</button>
+        </div>
+    </div>
+
+    <div id="image-popup" class="popup hidden">
+        <div class="popup-content">
+            <label for="image-alt">Alt text:</label>
+            <input type="text" id="image-alt" placeholder="Description of the image">
+            <label for="image-url">Link of the image:</label>
+            <input type="url" id="image-url" placeholder="https://thisisanexample.com/image.jpg">
+            <button id="image-accept-button">Accept</button>
+            <button id="image-cancel-button">Cancel</button>
+        </div>
+    </div>
+
+    
+</body>
+
+</html>
